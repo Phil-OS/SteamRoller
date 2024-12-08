@@ -142,7 +142,7 @@ function StartSMBShare ($cd) {
 }
 
 $passFuncs = {
-function ChangeLocalPasswords ($ServersList, $cd, $admin) {
+function ChangeLocalPasswords ($ServersList, $cd, $admin) {<#
   Write-Host "Changing local passwords" -ForegroundColor Green
   $newPass="Superchiapet1"
   $cmdCommand1 = @"
@@ -180,12 +180,12 @@ function ChangeLocalPasswords ($ServersList, $cd, $admin) {
 	}
     Catch {
     	  Write-Output "Could not access " $_
-    	}
-  }
+    	} #>
+  } 
 }
 
 function ChangeADPass () {
-    Write-Host "Changing Active Directory Users' Passwords" -ForegroundColor Green
+   <# Write-Host "Changing Active Directory Users' Passwords" -ForegroundColor Green
     $domain = $(Get-ADDomain | Select -ExpandProperty NetBIOSName)
     Add-Type -AssemblyName System.Web
     # Write-Output "Username,Password" > C:\incred.csv
@@ -195,8 +195,8 @@ function ChangeADPass () {
     Write-Output "$domain\$user,$pass"
     Set-ADAccountPassword -Identity $_.Name -Reset -NewPassword (ConvertTo-SecureString -AsPlainText $pass -Force) 
     $pass = $Null
-  }
-}
+  } #>
+} 
 }
 
 function RemoveFirewallRules($ServersList, $DCList) {
