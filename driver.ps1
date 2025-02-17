@@ -185,7 +185,7 @@ function ChangeLocalPasswords ($ServersList, $cd, $admin) {<#
 }
 
 function ChangeADPass () {
-   <# Write-Host "Changing Active Directory Users' Passwords" -ForegroundColor Green
+    <#Write-Host "Changing Active Directory Users' Passwords" -ForegroundColor Green
     $domain = $(Get-ADDomain | Select -ExpandProperty NetBIOSName)
     Add-Type -AssemblyName System.Web
     # Write-Output "Username,Password" > C:\incred.csv
@@ -195,8 +195,8 @@ function ChangeADPass () {
     Write-Output "$domain\$user,$pass"
     Set-ADAccountPassword -Identity $_.Name -Reset -NewPassword (ConvertTo-SecureString -AsPlainText $pass -Force) 
     $pass = $Null
-  } #>
-} 
+  	} 
+	}#> 
 }
 
 function RemoveFirewallRules($ServersList, $DCList) {
